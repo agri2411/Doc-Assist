@@ -1,0 +1,97 @@
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <title>Dashboard Documentation</title>
+        <style>
+            body { font-family: Arial, sans-serif; margin: 40px; color: #333; }
+            h1, h2, h3 { color: #2c3e50; }
+            pre { background: #f4f4f4; padding: 10px; overflow-x: auto; }
+            code { font-family: monospace; }
+            table { border-collapse: collapse; width: 100%; }
+            th, td { border: 1px solid #ddd; padding: 8px; }
+            th { background-color: #f9f9f9; }
+        </style>
+    </head>
+    <body>
+        <h1>OpsMetricDashboard Documentation</h1>
+<h2>Overview</h2>
+<p>The OpsMetricDashboard is a comprehensive business intelligence tool designed to provide insights into various operational metrics within an organization. It leverages data from multiple sources to present key performance indicators (KPIs) and trends that help in making informed decisions. The dashboard is highly interactive, allowing users to filter and drill down into specific data points.</p>
+<h2>Key Performance Indicators (KPIs) and Charts</h2>
+<h3>1. Lots Assigned</h3>
+<ul>
+<li><strong>Description</strong>: Displays the total number of lots assigned within the selected date range.</li>
+<li><strong>Purpose</strong>: Helps in tracking the workload and distribution of tasks within the facility.</li>
+</ul>
+<h3>2. Transport</h3>
+<ul>
+<li><strong>Description</strong>: Shows the number of transports arranged for lots.</li>
+<li><strong>Purpose</strong>: Useful for logistics and planning, ensuring efficient movement of goods.</li>
+</ul>
+<h3>3. Owner Retained</h3>
+<ul>
+<li><strong>Description</strong>: Indicates the number of lots retained by the owner.</li>
+<li><strong>Purpose</strong>: Important for understanding customer retention and satisfaction.</li>
+</ul>
+<h3>4. Lots Cancelled</h3>
+<ul>
+<li><strong>Description</strong>: Counts the lots that have been cancelled.</li>
+<li><strong>Purpose</strong>: Assists in identifying issues in operations that may lead to cancellations.</li>
+</ul>
+<h3>5. DOL to Assigned Avg Bus Days</h3>
+<ul>
+<li><strong>Description</strong>: Average business days from Date of Loss to assignment.</li>
+<li><strong>Purpose</strong>: Measures efficiency in the assignment process post-incident reporting.</li>
+</ul>
+<h3>6. Assigned to First Contact Avg Bus Hours</h3>
+<ul>
+<li><strong>Description</strong>: Average business hours taken to make the first contact after assignment.</li>
+<li><strong>Purpose</strong>: Helps in evaluating the responsiveness of the team.</li>
+</ul>
+<h3>7. Assigned to Cleared Avg Bus Days</h3>
+<ul>
+<li><strong>Description</strong>: Average business days taken from assignment to clearance of lots.</li>
+<li><strong>Purpose</strong>: Critical for assessing the speed of operations and clearance rates.</li>
+</ul>
+<h3>8. Gross Assignments</h3>
+<ul>
+<li><strong>Description</strong>: Total assignments handled, irrespective of their current status.</li>
+<li><strong>Purpose</strong>: Provides a gross overview of operational volume.</li>
+</ul>
+<h2>Filters and Their Usage</h2>
+<h3>Date Range</h3>
+<ul>
+<li><strong>Description</strong>: Allows selection of start and end dates to focus the dashboard data on a specific period.</li>
+<li><strong>Purpose</strong>: Tailors the displayed data to the time frame of interest for better decision-making.</li>
+</ul>
+<h3>Yard ID, Country ID, Division ID, Region ID</h3>
+<ul>
+<li><strong>Description</strong>: Filters to narrow down data based on specific yards, countries, divisions, or regions.</li>
+<li><strong>Purpose</strong>: Useful for regional managers or specific yard analysis to localize the data insights.</li>
+</ul>
+<h3>Additional Filters</h3>
+<ul>
+<li><strong>Segment, Division, Region, State, Facility Name, Virtual Sale Location, Business Unit, Lot Type, Loss Type, Tow Type, Seller Company Code, Seller Type, Category Type</strong></li>
+<li><strong>Purpose</strong>: These filters provide more granular control over the data, allowing users to drill down into very specific areas of interest.</li>
+</ul>
+<h2>Data Source and Logic</h2>
+<h3>General Structure</h3>
+<ul>
+<li><strong>Source</strong>: Data is primarily pulled from the <code>cprtpr-dataplatform-sp1.usmart</code> database using SQL queries.</li>
+<li><strong>Integration</strong>: Data is fetched and processed through SQL queries embedded within the dashboard components. These queries often include parameters linked to the dashboard filters to provide dynamic data retrieval based on user input.</li>
+</ul>
+<h3>Example Query</h3>
+<ul>
+<li><strong>Purpose</strong>: Fetch the number of lots assigned.</li>
+<li><strong>Query</strong>:
+     <code>sql
+     SELECT SUM(lots_assigned) AS col1
+     FROM `cprtpr-dataplatform-sp1`.usmart.fact_lots_ops_opt
+     WHERE assg_dt BETWEEN ${startDate} AND ${endDate}</code></li>
+<li><strong>Description</strong>: This query calculates the total lots assigned between user-specified start and end dates.</li>
+</ul>
+<p>This documentation should assist users in navigating and utilizing the OpsMetricDashboard effectively to analyze operational data and derive actionable insights.</p>
+    </body>
+    </html>
+    
